@@ -26,14 +26,16 @@ public class UserServices {
     }
 
     public boolean register(User user) {
-        // 检查用户是否已经存在
-        if (userRepository.existsById(user.getUserId())) {
+        System.out.println("service层接收到的user: "+user.toString());
+        // 检查邮箱是否已经存在（修正这里）
+        if (userRepository.existsByEmail(user.getEmail())) {
             return false; // 用户已存在，注册失败
         }
         // 进行用户注册
         userRepository.save(user);
         return true; // 注册成功
     }
+
 
     public boolean login(String email, String password) {
         // 根据邮箱查找用户
@@ -43,6 +45,7 @@ public class UserServices {
         }
         return false; // 登录失败
     }
+
 
     public boolean resetPassword(String email, String newPassword) {
         // 根据邮箱查找用户

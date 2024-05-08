@@ -4,6 +4,7 @@ import com.suyanqa.medical.mod.Medicine;
 import com.suyanqa.medical.server.MedicalService;
 import com.suyanqa.medical.server.MedicinesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,9 +61,9 @@ public class MedicinesController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Medicine> deleteMedicine(@RequestBody Medicine medicine) {
-        if (medicinesServices.existsById(medicine.getId())) {
-            medicinesServices.deleteById(medicine.getId());
+    public ResponseEntity<Medicine> deleteMedicine(@RequestParam Integer id) {
+        if (medicinesServices.existsById(id)) {
+            medicinesServices.deleteById(id);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();

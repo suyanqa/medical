@@ -1,5 +1,6 @@
 package com.suyanqa.medical.controller;
 
+import com.suyanqa.medical.mod.ForgotPasswordRequest;
 import com.suyanqa.medical.mod.User;
 import com.suyanqa.medical.server.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class UserController {
     // 注册功能
     @PostMapping("/register")
     public String register(@RequestBody User user) {
+        System.out.println("controller层接收到的user: "+user.toString());
         if (userServices.register(user)) {
             return "注册成功";
         } else {
@@ -38,8 +40,9 @@ public class UserController {
     // 登录功能
     @PostMapping("/login")
     public String login(@RequestBody User user) {
-        System.out.println(user.toString());
+//        System.out.println(user.toString());
         if (userServices.login(user.getEmail(), user.getPassword())) {
+//            System.out.println(user.getEmail() + "\n" + user.getPassword());
             return "登录成功";
         } else {
             return "登录失败无效的电子邮件或密码";
@@ -48,8 +51,9 @@ public class UserController {
 
     // 忘记密码功能
     @PostMapping("/forgot-password")
-    public String forgotPassword(@RequestParam String email, @RequestParam String newPassword) {
-        if (userServices.resetPassword(email, newPassword)) {
+    public String forgotPassword(@RequestBody ForgotPasswordRequest forgotPasswordRequest) {
+        System.out.println(forgotPasswordRequest.getEmail()+forgotPasswordRequest.getNewPassword());
+        if (userServices.resetPassword(forgotPasswordRequest.getEmail(), forgotPasswordRequest.getNewPassword())) {
             return "密码更改成功";
         } else {
             return "密码重置失败,用户未找到";

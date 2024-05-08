@@ -11,5 +11,5 @@ package com.suyanqa.medical.mod;
  * @Motto ：ABC(Always Be Coding)
  */
 public enum Gender {
-    MALE,FEMALE,OTHER;
+    男, 女
 }

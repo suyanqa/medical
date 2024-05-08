@@ -13,7 +13,7 @@ import org.springframework.data.relational.core.mapping.Table;
  * @IDE ：IntelliJ IDEA 2021.2.2
  * @Motto ：ABC(Always Be Coding)
  */
-@Table("medicine")
+@Table("medicines")
 public class Medicine {
     @Id
     private int id;

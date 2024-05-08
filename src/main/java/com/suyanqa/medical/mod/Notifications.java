@@ -1,8 +1,11 @@
 package com.suyanqa.medical.mod;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.xml.crypto.Data;
+import java.time.LocalDateTime;
 
 /**
  * # -*- coding: utf-8 -*-
@@ -16,12 +19,19 @@ import javax.xml.crypto.Data;
  */
 @Table("notifications")
 public class Notifications {
+    @Id
     private int id;
+    @Column("type")
     private String type;
+    @Column("doctor_id")
     private int doctor_id;
+    @Column("patient_id")
     private int patient_id;
+    @Column("content")
     private String content;
-    private Data created_at;
+    @Column("created_at")
+    private LocalDateTime created_at;
+    @Column("status")
     private String status;
 
     public Notifications() {
@@ -67,11 +77,11 @@ public class Notifications {
         this.content = content;
     }
 
-    public Data getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Data created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 

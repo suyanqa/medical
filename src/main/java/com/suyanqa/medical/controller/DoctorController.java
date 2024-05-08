@@ -59,9 +59,10 @@ public class DoctorController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Void> deletePatient(@RequestParam Integer patientId) {
-        if (doctorsService.existsById(patientId)) {
-            doctorsService.deleteById(patientId);
+    public ResponseEntity<Void> deletePatient(@RequestParam Integer id) {
+        System.out.println(id);
+        if (doctorsService.existsById(id)) {
+            doctorsService.deleteById(id);
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();

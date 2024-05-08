@@ -1,5 +1,7 @@
 package com.suyanqa.medical.mod;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * # -*- coding: utf-8 -*-
  *
@@ -10,9 +12,11 @@ package com.suyanqa.medical.mod;
  * @IDE ：IntelliJ IDEA 2021.2.2
  * @Motto ：ABC(Always Be Coding)
  */
+
 public enum Role {
     DOCTOR,
     NURSE,
     ADMIN,
-    PATIENT
+    PATIENT;
+
 }

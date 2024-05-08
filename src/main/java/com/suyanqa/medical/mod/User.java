@@ -1,5 +1,6 @@
 package com.suyanqa.medical.mod;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.data.relational.core.mapping.Table;
  */
 @Table("users")
 public class User {
+    @Id
     private int userId;
     private Role role;
     private String name;
@@ -28,6 +30,11 @@ public class User {
 
     public int getUserId() {
         return userId;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public void setUserId(int userId) {
